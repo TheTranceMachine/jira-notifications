@@ -5,14 +5,14 @@ import './App.css';
 import { Version2Client } from 'jira.js';
 
 const client = new Version2Client({
-  host: 'http://localhost:8080',
+  host: process.env.REACT_APP_SERVER,
   telemetry: false, // Telemetry will not be collected
   authentication: {
     basic: {
-      username: 'grzegorz.smolin@***REMOVED***.com',
-      password: '***REMOVED***',
-    },
-  },
+      username: process.env.REACT_APP_JIRA_USERNAME,
+      password: process.env.REACT_APP_JIRA_PASSWORD
+    }
+  }
 });
 
 async function projects() { return await client.projects.getAllProjects(); }

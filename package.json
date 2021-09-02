@@ -18,7 +18,7 @@
     "react-scripts": "4.0.3"
   },
   "scripts": {
-    "start": "node ./server/server.js",
+    "start": "node -r dotenv/config ./server/server.js",
     "ui": "react-scripts start",
     "dev": "concurrently \"npm start\" \"npm run ui\"",
     "build": "react-scripts build",
