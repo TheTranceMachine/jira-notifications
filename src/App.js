@@ -2,8 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Version2Client } from 'jira.js';
+
+const client = new Version2Client({
+  host: 'http://localhost:8080',
+  telemetry: false, // Telemetry will not be collected
+  authentication: {
+    basic: {
+      username: 'grzegorz.smolin@***REMOVED***.com',
+      password: '***REMOVED***',
+    },
+  },
+});
+
+async function projects() { return await client.projects.getAllProjects(); }
 
 function App() {
+  console.log(projects());
   return (
     <div className="App">
       <header className="App-header">
