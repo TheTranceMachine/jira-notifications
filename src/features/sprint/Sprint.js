@@ -45,11 +45,19 @@ function Sprint() {
     <div className="sprint">
       {fetched && (
         <>
-          <h2 className="sprint__name">{sprint.name}</h2>
+          <div className="sprint__name-wrapper">
+            <div className="sprint__name">{sprint.name}</div>
+          </div>
           <div className="sprint__goal">{sprint.goal}</div>
           <div className="sprint__days-left">
             <CircularBar value={daysLeft}/>
           </div>
+          <ul className="sprint__menu">
+            <li className="sprint__menu__tab">Test</li>
+            <li className="sprint__menu__tab">Test</li>
+            <li className="sprint__menu__tab">Test</li>
+            <li className="sprint__menu__tab">Test</li>
+          </ul>
         </>
       )}
     </div>

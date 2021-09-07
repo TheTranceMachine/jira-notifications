@@ -2,6 +2,7 @@
   "name": "redux-electron-tray-express-app",
   "version": "0.1.0",
   "private": true,
+  "main": "src/electron-entry.js",
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
@@ -24,7 +25,10 @@
     "dev": "concurrently \"npm start\" \"npm run ui\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "concurrently \"npm run dev\" \"electron .\"",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,6 +47,11 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.1",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "electron": "^14.0.0",
+    "electron-builder": "^22.11.7"
+  },
+  "build": {
+    "appId": "com.example.app"
   }
 }
