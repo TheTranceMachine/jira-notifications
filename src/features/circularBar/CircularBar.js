@@ -6,7 +6,7 @@ const CircularBar = ({ value }) => {
   return (
     <CircularProgressbar
       value={value}
-      maxValue={10}
+      maxValue={13}
       text={`${value} days left`}
       styles={buildStyles({
         textSize: '12px'
