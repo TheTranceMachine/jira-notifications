@@ -52,12 +52,12 @@ function Sprint() {
           <div className="sprint__days-left">
             <CircularBar value={daysLeft}/>
           </div>
-          <ul className="sprint__menu">
-            <li className="sprint__menu__tab">Test</li>
-            <li className="sprint__menu__tab">Test</li>
-            <li className="sprint__menu__tab">Test</li>
-            <li className="sprint__menu__tab">Test</li>
-          </ul>
+          {/*<ul className="sprint__menu">*/}
+          {/*  <li className="sprint__menu__tab">Test</li>*/}
+          {/*  <li className="sprint__menu__tab">Test</li>*/}
+          {/*  <li className="sprint__menu__tab">Test</li>*/}
+          {/*  <li className="sprint__menu__tab">Test</li>*/}
+          {/*</ul>*/}
         </>
       )}
     </div>

@@ -1,10 +1,11 @@
-const { app, BrowserWindow, Tray } = require('electron')
-const path = require('path')
+const { app, BrowserWindow, Tray } = require('electron');
+const path = require('path');
+const isDev = require('electron-is-dev');
 
-let window = null
-let tray = null
+let window = null;
+let tray = null;
 
-app.dock.hide()
+app.dock.hide();
 
 // Wait until the app is ready
 app.once('ready', () => {
@@ -29,10 +30,9 @@ app.once('ready', () => {
     }
   })
 
-  const url = "http://localhost:3000"
-  window.loadURL(url)
+  window.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
 
-  window.webContents.openDevTools();
+  // window.webContents.openDevTools();
 
   window.once('ready-to-show', () => {
     const position = getWindowPosition()
