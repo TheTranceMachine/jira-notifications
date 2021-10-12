@@ -54,6 +54,14 @@
     ]
   },
   "build": {
-    "appId": "com.example.app"
+    "appId": "com.example.app",
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "./public/electron.js"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }
