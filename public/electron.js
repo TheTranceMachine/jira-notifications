@@ -11,7 +11,6 @@ app.dock.hide();
 app.once('ready', () => {
 
   // Create a new tray
-  // const icon = nativeImage.createFromPath('./assets/electron-icon.png')
   const icon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAA0VXHyAAABlUlEQVQ4EX3STyiDcRzH8T2sUWuJSGnJCqVw4IBWDnJwUHN2o5wtHBxQzg4OnNYOclGjlF2Gg1BcVqScSOawKOFgI5d5f36eR0+m51uvfX9/vr/n99vz/Hw+jyiVSjG84AABj9L/p1iUhhND/1d5jLJyDK94xJFHqc9HQROucIZd1GkBuQ2LUEwjibjzMMsu6iefI4UkQihgDlEc4h1BZDCOrGVZM2SzyzxPXbHbQdoJ6OUtoMYe76b9Bj9qoQj5NUmo6JOBZrJ2y6GTHfJkE7T196rohPGEIr5gThBmcg83WIXz16K0l1Fh1+Vo9yGObbPY+WFgH9ql0jW2SV/Rbj9A85PIQif5CTrDyOMSOzCXhlwPvWATtO8x4PSdwRiDRTygAae4QJe7kL5e3gci7nF9Z/dt67ULl8gFbKBDC8g9eEYAutr6SjFN6AS/9522TjGFFqxDp7tGBnfYghNp87bdR2JGb/wYKT7dGn1dqkGMoBq6ULpcrZhAebAoYm8xSm7ECRLllR4jLNAduIViFuYu/F3yDbnvxLOWxqVCAAAAAElFTkSuQmCC')
   tray = new Tray(icon)
   tray.on('right-click', toggleWindow)
