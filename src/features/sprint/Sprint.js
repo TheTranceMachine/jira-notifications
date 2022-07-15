@@ -10,7 +10,7 @@ import './Sprint.css';
 
 function Sprint() {
   const [sprint, setSprint] = useState({});
-  const boardId = 336;
+  const boardId = 379;
   const activeSprints = useSelector(selectActiveSprint);
   const fetchStatus = useSelector(selectSprintStatus);
   const fetched = fetchStatus === 'success' && activeSprints.values.length;
