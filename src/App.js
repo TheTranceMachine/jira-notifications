@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import Sprint from './features/sprint/Sprint';
+import Issues from './features/issues/Issues';
 
 function App() {
   return (
     <div className="App">
-      <Sprint />
+      <Issues />
     </div>
   );
 }

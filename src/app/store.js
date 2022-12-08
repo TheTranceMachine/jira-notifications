@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import sprintReducer from '../features/sprint/SprintSlice';
+import issuesReducer from '../features/issues/IssuesSlice';
 
 export const store = configureStore({
   reducer: {
-    sprint: sprintReducer,
+    issues: issuesReducer,
   },
 });
