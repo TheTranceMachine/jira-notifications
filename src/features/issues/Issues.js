@@ -1,49 +1,52 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { DataTable, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "carbon-components-react";
+import React from 'react';
 import {
-  getBoardIssuesAsync,
-  selectBoardIssues,
-  selectBoardIssuesStatus
-} from './IssuesSlice';
-import './Issues.css';
+  DataTable,
+  DataTableSkeleton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
+} from "carbon-components-react";
 import { dataTableHeaders, dataTableRows } from "./DataTableData";
+import { useGetIssuesQuery } from '../api/apiSlice';
 
 function Issues() {
-  const [issues, setIssues] = useState([]);
-  const boardId = 880;
-  const fetchedIssues = useSelector(selectBoardIssues);
-  const fetchedIssuesStatus = useSelector(selectBoardIssuesStatus);
-  const fetched = fetchedIssuesStatus === 'success' && fetchedIssues.length;
+  // const boardId = 880;
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!fetched) {
-      dispatch(getBoardIssuesAsync(boardId));
-    }
-  }, [fetched, fetchedIssues, dispatch]);
-
-  useEffect(() => {
-    if (fetchedIssues.length) {
-      setIssues(fetchedIssues);
-    }
-  }, [fetchedIssues]);
+  const {
+    data: issues,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetIssuesQuery();
 
   return (
     <div className="issues">
-      {fetched && issues.length ? (
+      { isLoading && (
+        <DataTableSkeleton
+          showHeader={false}
+          showToolbar={false}
+          headers={dataTableHeaders}
+          rowCount={5}
+          columnCount={8}
+          className="issues__skeleton-table"
+        />
+      )}
+      {!isLoading && !isError && isSuccess && issues.issues.length && (
         <DataTable
           isSortable
-          rows={dataTableRows(issues)}
+          rows={dataTableRows(issues.issues)}
           headers={dataTableHeaders}
         >
-          {({ rows, headers, getTableProps, getHeaderProps, getRowProps }) => (
+          {({rows, headers, getTableProps, getHeaderProps, getRowProps}) => (
             <Table {...getTableProps()}>
               <TableHead>
                 <TableRow>
                   {headers.map((header) => (
-                    <TableHeader {...getHeaderProps({ header })}>
+                    <TableHeader {...getHeaderProps({header})}>
                       {header.header}
                     </TableHeader>
                   ))}
@@ -51,7 +54,7 @@ function Issues() {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow {...getRowProps({ row })}>
+                  <TableRow {...getRowProps({row})}>
                     {row.cells.map((cell) => (
                       <TableCell key={cell.id}>{cell.value}</TableCell>
                     ))}
@@ -61,8 +64,8 @@ function Issues() {
             </Table>
           )}
         </DataTable>
-      )
-      : null}
+      )}
+      { !isLoading && !isSuccess && isError && <div>Something went wrong - {error}</div> }
     </div>
   )
 }

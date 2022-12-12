@@ -30,7 +30,7 @@ app.once('ready', () => {
     }
   })
 
-  window.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`)
+  window.loadURL(isDev ? 'http://localhost:5556' : `file://${path.join(__dirname, '../build/index.html')}`)
 
   // window.webContents.openDevTools();
 

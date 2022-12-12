@@ -44,7 +44,7 @@ export const dataTableRows = (issues) => {
         reporter: { displayName: reporter },
         updated,
         summary,
-        epic: { key: epic },
+        epic,
         status: { name: status },
         assignee
       }
@@ -56,7 +56,7 @@ export const dataTableRows = (issues) => {
       created,
       updated,
       summary,
-      epic,
+      epic: epic === undefined ? null : epic.key,
       status,
       assignee: assignee === null ? null : assignee.displayName
     })
