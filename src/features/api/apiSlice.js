@@ -1,14 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const jiraUsername = localStorage.getItem("jira_username");
-const jiraPassword = localStorage.getItem("jira_password");
-
 export const jiraApi = createApi({
     reducerPath: 'jiraApi',
     baseQuery: fetchBaseQuery(
       {
         baseUrl: process.env.REACT_APP_SERVER,
         prepareHeaders: (headers) => {
+          const jiraUsername = localStorage.getItem("jira_username");
+          const jiraPassword = localStorage.getItem("jira_password");
+
           headers.set("Authorization", `Basic ${Buffer.from(
             `${jiraUsername}:${jiraPassword}`
           ).toString('base64')}`);

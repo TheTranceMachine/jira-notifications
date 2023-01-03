@@ -17,7 +17,7 @@ const useStateWithLocalStorage = localStorageKey => {
 const Login = () => {
   const [username, setUsername] = useStateWithLocalStorage('jira_username');
   const [password, setPassword] = useStateWithLocalStorage('jira_password');
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     if (password) {
@@ -28,25 +28,27 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="bx--grid login__grid center">
-        <div className="bx--row">
-          <div className="bx--col">
+      <div className="cds--grid">
+        <div className="cds--row">
+          <div className="cds--col">
             <div className="login__title">Jira Notifications</div>
           </div>
         </div>
-        <div className="bx--row">
-          <div className="bx--col">
+        <div className="cds--row">
+          <div className="cds--col">
             <Form>
-              <div className="login__input__username">
+              <div className="login__input">
                 <TextInput
-                  id="username"
+                  type="username"
+                  id="jira_username"
                   labelText="Jira Username"
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div className="login__input__password">
+              <div className="login__input">
                 <TextInput
-                  id="password"
+                  type="password"
+                  id="jira_password"
                   labelText="Jira Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
