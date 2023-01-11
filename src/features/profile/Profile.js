@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Loading, Button, ButtonSet } from "carbon-components-react";
-import { useGetProfileQuery } from "../api/apiSlice";
+import { Loading } from "carbon-components-react";
+import { useGetIssuesQuery, useGetProfileQuery } from "../api/apiSlice";
+import CommonFooter from "../common/Common";
 
-const openIssues = () => {
-  window.open('http://localhost:5556/issues', '_blank', 'width=1200,height=700');
-}
 const Profile = () => {
   const history = useHistory();
+
   const {
     data: profile,
     isLoading,
@@ -16,9 +15,21 @@ const Profile = () => {
     refetch
   } = useGetProfileQuery();
 
+  const {
+    isFetching: isFetchingIssues,
+    refetch: issuesRefetch
+  } = useGetIssuesQuery();
+
   useEffect(() => {
     refetch();
-  }, [refetch])
+  }, [refetch]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      issuesRefetch();
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [issuesRefetch]);
 
   return (
     <div className="profile">
@@ -27,9 +38,23 @@ const Profile = () => {
           <div className="profile__error">
             <h4>Ops! Something went wrong.</h4>
             <div>Try logging in again.</div>
+            <a onClick={() => history.push('/')} href="/">
+              Login
+            </a>
           </div>
         )}
         { isSuccess && !isLoading && (
+          <>
+            <div className="profile__header">
+              { isFetchingIssues && <small>Checking for updates</small> }
+              <Loading
+                withOverlay={false}
+                className="profile__header__loading"
+                active={isFetchingIssues}
+                description="Checking for updates"
+                small
+              />
+            </div>
             <div className="cds--grid">
               <div className="cds--row">
                 <div className="cds--col profile__col--center">
@@ -51,24 +76,9 @@ const Profile = () => {
                 </div>
               </div>
             </div>
+          </>
         )}
-        <div className="profile__footer">
-          <ButtonSet>
-            <Button
-              onClick={() => history.push('/')}
-              className="profile__footer__button"
-            >
-              Login
-            </Button>
-            <Button
-              onClick={() => openIssues()}
-              className="profile__footer__button"
-              disabled={isError && !isSuccess}
-            >
-              Issues
-            </Button>
-          </ButtonSet>
-        </div>
+        <CommonFooter />
       </>
       { isLoading && (
         <Loading

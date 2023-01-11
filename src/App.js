@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import history from './history';
 import Login from './features/login/Login';
 import Profile from './features/profile/Profile';
+import Settings from './features/settings/Settings';
 import Issues from './features/issues/Issues';
 import { jiraApi } from './features/api/apiSlice';
 
@@ -30,6 +31,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={ Login } />
             <Route exact path="/profile" component={ Profile } />
+            <Route exact path="/settings" component={ Settings } />
             <Route exact path="/issues" component={ Issues } />
           </Switch>
         </Router>

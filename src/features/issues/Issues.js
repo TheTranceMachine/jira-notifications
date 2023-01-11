@@ -13,8 +13,6 @@ import { dataTableHeaders, dataTableRows } from "./DataTableData";
 import { useGetIssuesQuery } from '../api/apiSlice';
 
 function Issues() {
-  // const boardId = 880;
-
   const {
     data: issues,
     isLoading,

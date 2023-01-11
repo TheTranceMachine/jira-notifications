@@ -21,6 +21,21 @@ $carbon--theme: $carbon--theme--g90;
 }
 
 .profile {
+  &__header {
+    position: absolute;
+    top: 0;
+    width: 350px;
+    text-align: right;
+    padding: 10px;
+
+    small {
+      margin-right: 5px;
+    }
+
+    &__loading {
+      float: right;
+    }
+  }
   &__image {
     width: 164px;
     height: 164px;
@@ -36,24 +51,26 @@ $carbon--theme: $carbon--theme--g90;
   }
 
   &__error div {
-    margin-top: 10px;
-  }
-
-  &__footer {
-    position: absolute;
-    bottom: 0;
-    width: 350px;
-
-    &__button {
-      width: 50% !important;
-      display: block;
-      text-align: center;
-      padding: inherit;
-    }
+    margin: 10px 0;
   }
 }
 
-.login, .profile {
+.settings {
+  &__grid {
+    width: 320px;
+  }
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__team, &__projects, &__statuses, &__save-button {
+    margin-bottom: 20px;
+  }
+}
+
+.login, .profile, .settings {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,5 +78,18 @@ $carbon--theme: $carbon--theme--g90;
 
   &__col--center {
       text-align: center;
+  }
+}
+
+.common__footer {
+  position: absolute;
+  bottom: 0;
+  width: 350px;
+
+  &__button {
+    width: 50% !important;
+    display: block;
+    text-align: center;
+    padding: inherit;
   }
 }
