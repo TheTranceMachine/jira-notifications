@@ -1,0 +1,95 @@
+@use '@carbon/themes';
+@use '@carbon/grid';
+@import '~@carbon/themes/scss/themes';
+$carbon--theme: $carbon--theme--g90;
+@include carbon--theme();
+@import '~carbon-components/scss/globals/scss/styles.scss';
+
+// Emit the flex-grid styles
+@include grid.flex-grid();
+
+.login {
+  &__title {
+    font-family: "Lucida Handwriting", cursive;
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  &__input {
+    margin-bottom: 20px;
+  }
+}
+
+.profile {
+  &__header {
+    position: absolute;
+    top: 0;
+    width: 350px;
+    text-align: right;
+    padding: 10px;
+
+    small {
+      margin-right: 5px;
+    }
+
+    &__loading {
+      float: right;
+    }
+  }
+  &__image {
+    width: 164px;
+    height: 164px;
+  }
+
+  &__welcome-user {
+    font-size: 24px;
+    margin-top: 20px;
+
+    .welcome {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__error div {
+    margin: 10px 0;
+  }
+}
+
+.settings {
+  &__grid {
+    width: 320px;
+  }
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__team, &__projects, &__statuses, &__save-button {
+    margin-bottom: 20px;
+  }
+}
+
+.login, .profile, .settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 450px;
+
+  &__col--center {
+      text-align: center;
+  }
+}
+
+.common__footer {
+  position: absolute;
+  bottom: 0;
+  width: 350px;
+
+  &__button {
+    width: 50% !important;
+    display: block;
+    text-align: center;
+    padding: inherit;
+  }
+}

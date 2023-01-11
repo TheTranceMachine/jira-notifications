@@ -1,0 +1,8 @@
+.git
+.idea
+dist
+chart
+.dockerignore
+.env
+Dockerfile
+node_modules
