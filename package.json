@@ -33,17 +33,18 @@
     "cross-env": "^7.0.3",
     "electron": "^14.0.0",
     "electron-builder": "^22.11.7",
+    "node-fetch": "^3.3.0",
     "redux-logger": "^3.0.6",
     "wait-on": "^6.0.0"
   },
   "scripts": {
-    "start": "node -r dotenv/config ./server/server.js",
+    "start": "node ./server/server.js",
     "ui": "react-scripts start",
     "dev": "concurrently \"npm start\" \"npm run ui\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-dev": "concurrently \"BROWSER=none npm run dev\" \"wait-on http://localhost:5556 && electron .\"",
+    "electron-dev": "PORT=5556 JIRA_URL=https://jira.sec.***REMOVED***.com/rest/api/2 REACT_APP_SERVER=http://localhost:7070 concurrently \"BROWSER=none npm run dev\" \"wait-on http://localhost:5556 && electron .\"",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },

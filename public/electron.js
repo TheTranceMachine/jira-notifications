@@ -11,7 +11,7 @@ app.dock.hide();
 app.once('ready', () => {
 
   // Create a new tray
-  const icon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEKADAAQAAAABAAAAEAAAAAA0VXHyAAABlUlEQVQ4EX3STyiDcRzH8T2sUWuJSGnJCqVw4IBWDnJwUHN2o5wtHBxQzg4OnNYOclGjlF2Gg1BcVqScSOawKOFgI5d5f36eR0+m51uvfX9/vr/n99vz/Hw+jyiVSjG84AABj9L/p1iUhhND/1d5jLJyDK94xJFHqc9HQROucIZd1GkBuQ2LUEwjibjzMMsu6iefI4UkQihgDlEc4h1BZDCOrGVZM2SzyzxPXbHbQdoJ6OUtoMYe76b9Bj9qoQj5NUmo6JOBZrJ2y6GTHfJkE7T196rohPGEIr5gThBmcg83WIXz16K0l1Fh1+Vo9yGObbPY+WFgH9ql0jW2SV/Rbj9A85PIQif5CTrDyOMSOzCXhlwPvWATtO8x4PSdwRiDRTygAae4QJe7kL5e3gci7nF9Z/dt67ULl8gFbKBDC8g9eEYAutr6SjFN6AS/9522TjGFFqxDp7tGBnfYghNp87bdR2JGb/wYKT7dGn1dqkGMoBq6ULpcrZhAebAoYm8xSm7ECRLllR4jLNAduIViFuYu/F3yDbnvxLOWxqVCAAAAAElFTkSuQmCC')
+  const icon = nativeImage.createFromDataURL('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAABW0lEQVR4nJ3SS0sCURgG4IFCZlFSpoaBFnPLv9Gi31BkbboQipc2hUI1M84k/aIWrdy3MEFJcOHCYFIoBCXNjr0x2sA4TaP2wbc773O+c6Eoh/LFtU9WHkjUf4ref+oyYh9cdoCZEU+0/uaKlIZho6dG1s5bj+7jGuZ2ijAmMCG3jmFegRTKdLB8WocrUoY32RgDHCfhFUiCCjDXH/CfNbF4VAUdKYPNksJEhP8J680rXwil2/AmNBJIvmyvi1jiZPJgg4yOI6iIGWGjWYlUmMseb2wQzmHFbhJOJjFbQFDxHhYhGICOMWK/YgvoJai4/4UoI2Q1oW154xoJpttgZWICiEiZi1eQt0P0i1w4rMKfamLjqjfxJfJWxJdqwLVXGj5tMNMBl8X4zpSlNm9wZwY4mWB+twj3SQ2Bi1bBMfzXJPq39kSfX6cKWxH94uiDSnemsBnxJbSB06JvFJtU2+WBC0sAAAAASUVORK5CYII=')
   tray = new Tray(icon)
   tray.on('right-click', toggleWindow)
   tray.on('double-click', toggleWindow)
@@ -31,7 +31,7 @@ app.once('ready', () => {
     }
   })
 
-  window.loadURL(isDev ? 'http://localhost:5556' : `file://${path.join(__dirname, '../build/index.html')}`)
+  window.loadURL(isDev ? `http://localhost:${process.env.PORT}` : `file://${path.join(__dirname, '../build/index.html')}`)
 
   // window.webContents.openDevTools();
 

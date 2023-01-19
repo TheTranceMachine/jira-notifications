@@ -15,6 +15,7 @@ const useStateWithLocalStorage = localStorageKey => {
 };
 
 const Login = () => {
+  localStorage.clear();
   const [username, setUsername] = useStateWithLocalStorage('jira_username');
   const [password, setPassword] = useStateWithLocalStorage('jira_password');
   const history = useHistory();

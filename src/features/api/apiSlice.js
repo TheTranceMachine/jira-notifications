@@ -2,15 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const findMatchingElementById = (array, id) => array.find(element => element.id === id);
 
-const formatJiraFilters = (items) => {
-  let itemCollection = [];
-  for (let item of items) {
-    let formattedItem = `"${item}"`;
-    itemCollection.push(formattedItem);
-  }
-  itemCollection = encodeURI(itemCollection);
-  itemCollection = itemCollection.replaceAll('%20', '+');
-  return itemCollection;
+const formatJqlQuery = (jql) => {
+  let formattedJql = encodeURI(jql);
+  formattedJql = formattedJql.replaceAll('%20', '+');
+  formattedJql = formattedJql.replaceAll('=', '%3D');
+  return formattedJql;
 }
 
 const notifyIfIssueUpdated = (cachedIssues, newIssues) => {
@@ -51,17 +47,8 @@ export const jiraApi = createApi({
       }),
       getIssues: builder.query({
         query: () => {
-          const jiraTeam = encodeURI(JSON.parse(localStorage.getItem("jira_team")));
-          const jiraProjects = JSON.parse(localStorage.getItem("jira_projects"));
-          const jiraStatuses = JSON.parse(localStorage.getItem("jira_statuses"));
-
-          const query = '/search?jql=' +
-            `Team+%3D+%22${jiraTeam}%22+AND+project+in+(${formatJiraFilters(jiraProjects)})` +
-            `+AND+assignee=currentUser()+AND+status+in+(${formatJiraFilters(jiraStatuses)})`;
-
-          console.log(query);
-
-          return query;
+          const jqlQuery = localStorage.getItem("jira_jql");
+          return '/search?jql=' + formatJqlQuery(jqlQuery);
         },
         async onQueryStarted(arg, { getState, queryFulfilled }) {
           try {

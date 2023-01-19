@@ -3,7 +3,7 @@ const path = require('path');
 const app = express();
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const morgan = require('morgan');
-const cors = require('cors')
+const cors = require('cors');
 
 app.use(express.static(path.join(__dirname, 'build')));
 

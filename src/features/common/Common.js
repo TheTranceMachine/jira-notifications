@@ -6,7 +6,7 @@ const openIssues = () => {
 }
 
 const openSettings = () => {
-  window.open('/settings', '_blank', 'width=350,height=550');
+  window.open('/settings', '_blank', 'width=800,height=290');
 }
 
 const CommonFooter = () => (

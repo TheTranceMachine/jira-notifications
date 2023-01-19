@@ -12,7 +12,7 @@ import {
 import { dataTableHeaders, dataTableRows } from "./DataTableData";
 import { useGetIssuesQuery } from '../api/apiSlice';
 
-function Issues() {
+const Issues = () => {
   const {
     data: issues,
     isLoading,
@@ -63,6 +63,7 @@ function Issues() {
           )}
         </DataTable>
       )}
+      <div className="issues__footer">Search JQL: { localStorage.getItem("jira_jql") }</div>
       { !isLoading && !isSuccess && isError && <div>Something went wrong - {error}</div> }
     </div>
   )

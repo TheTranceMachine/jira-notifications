@@ -56,25 +56,26 @@ $carbon--theme: $carbon--theme--g90;
 }
 
 .settings {
-  &__grid {
-    width: 320px;
-  }
+  height: 250px;
 
   &__title {
     font-size: 20px;
     margin-bottom: 20px;
   }
 
-  &__team, &__projects, &__statuses, &__save-button {
+  &__team, &__projects, &__statuses {
     margin-bottom: 20px;
   }
+}
+
+.login, .profile {
+  height: 450px;
 }
 
 .login, .profile, .settings {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 450px;
 
   &__col--center {
       text-align: center;
@@ -92,4 +93,9 @@ $carbon--theme: $carbon--theme--g90;
     text-align: center;
     padding: inherit;
   }
+}
+
+.issues__footer {
+  margin: 10px;
+  color: gray;
 }
