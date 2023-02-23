@@ -18,7 +18,7 @@ const notifyIfIssueUpdated = (cachedIssues, newIssues) => {
           new Notification('Jira ticket update', {body: issue.key})
             .onclick = (event) => {
             event.preventDefault();
-            window.open(`https://jira.sec.***REMOVED***.com/browse/${issue.key}`,"_blank");
+            window.open(`https://jira.sec.**REMOVE**.com/browse/${issue.key}`,"_blank");
           }
         }
       }
